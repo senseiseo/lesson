@@ -1,4 +1,3 @@
-#encoding: utf-8
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
@@ -13,7 +12,6 @@ end
 
 get '/visit' do  
 	erb :visit
-
 end
 
 get '/contacts' do 
@@ -30,6 +28,21 @@ visit = File.open("./public/users.txt","a")
 visit.write "User: #{@username}, phone: #{@phone}, date and time: #{@datetime}
 Barber man:#{@barber}.\n"
 visit.close
+
+hh = { :username => 'Введите имя',
+	   :phone => 'Введите телефон',
+	   :datetime => 'Введи корректно дату и время'
+	}
+
+	hh.each do |key , value|
+		if params[key] == ''
+			@error = hh[key]
+			return erb :visit
+		end
+	end
+	if @error != ''
+    	return erb :visit
+  	end
 
 erb :visit  
 end
