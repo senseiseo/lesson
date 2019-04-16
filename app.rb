@@ -50,11 +50,27 @@ erb :visit
 end
 
 post '/contacts' do
+	@name = params[:name]
 	@mail = params[:mail]
-	@body     = params[:body]
+	@body = params[:body]
+	
+	#Pony.mail({
+	#	:to => '19mur@mail.ru',
+		#:via => :smtp,
+	#	:via_options => {
+	#	  :address        => 'smtp.yandex.ru',
+	#	  :port           => '465',
+	#	  :user_name      => 'murtaziiin@yandex.ru',
+	#	  :password       => 'Murz1kK0t',
+	#	  :authentication => :login, # :plain, :login, :cram_md5, no auth by default
+	#	  :domain         => "localhost.localdomain" # the HELO domain provided by the client to the server
+	#	}
+	#  })
+	  
 
-contacts = File.open("./public/contacts.txt","a")
-contacts.write "Email_adress: #{@emailadress}, Message #{@message}.\n"
-contacts.close
-haml :contacts
+
+		contacts = File.open("./public/contacts.txt","a")
+		contacts.write "Email_adress: #{@mail}, Message #{@body} name #{@name}.\n"
+		contacts.close
+	haml :contacts
 end	
