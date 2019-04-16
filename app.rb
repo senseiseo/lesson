@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
+require 'haml'
+require 'pony'
 
 get '/' do
 	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
@@ -15,7 +17,7 @@ get '/visit' do
 end
 
 get '/contacts' do 
-	erb :contacts
+	haml :contacts
 end
 
 post '/visit' do
@@ -48,11 +50,11 @@ erb :visit
 end
 
 post '/contacts' do
-	@emailadress = params[:emailadress]
-	@message     = params[:message]
+	@mail = params[:mail]
+	@body     = params[:body]
 
 contacts = File.open("./public/contacts.txt","a")
 contacts.write "Email_adress: #{@emailadress}, Message #{@message}.\n"
 contacts.close
-erb :contacts
+haml :contacts
 end	
