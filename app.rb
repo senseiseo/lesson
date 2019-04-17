@@ -60,8 +60,8 @@ post '/contacts' do
 	#	:via_options => {
 	#	  :address        => 'smtp.yandex.ru',
 	#	  :port           => '465',
-	#	  :user_name      => 'murtaziiin@yandex.ru',
-	#	  :password       => 'Murz1kK0t',
+	#	  :user_name      => '',
+	#	  :password       => '',
 	#	  :authentication => :login, # :plain, :login, :cram_md5, no auth by default
 	#	  :domain         => "localhost.localdomain" # the HELO domain provided by the client to the server
 	#	}
