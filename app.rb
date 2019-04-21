@@ -3,29 +3,37 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'haml'
 require 'pony'
+require 'sqlite3'
 
-get '/' do
-	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
-end
-
-get '/About' do 
-	erb :about
-end
-
-get '/visit' do  
-	erb :visit
-end
-
-get '/contacts' do 
-	haml :contacts
-end
-
+def get_db
+	return SQLite3::Database.new 'base.db'
+  end
+  
+  configure do
+	db = get_db
+	db.execute 'CREATE TABLE IF NOT EXISTS "Messages"
+	  (
+		"id" INTEGER PRIMARY KEY AUTOINCREMENT,
+		"username" TEXT,
+		"phone" TEXT,
+		"email" TEXT,
+		"option" TEXT,
+	  )'
+	db.close
+  end
+  def save_form_data_to_database
+	db = get_db
+	db.execute 'INSERT INTO Messages (username, phone, datetime1, barber)
+	VALUES (?, ?, ?, ?)', [@username, @phone, @datetime, @barber]
+	db.close
+  end
+  
 post '/visit' do
 	@username = params[:username]
 	@phone = params[:phone]
 	@datetime = params[:datetime]	
 	@barber	= 	params[:barber]
-	
+	save_form_data_to_database
 visit = File.open("./public/users.txt","a")
 visit.write "User: #{@username}, phone: #{@phone}, date and time: #{@datetime}
 Barber man:#{@barber}.\n"
@@ -45,32 +53,29 @@ hh = { :username => 'Введите имя',
 	if @error != ''
     	return erb :visit
   	end
+end
 
-erb :visit  
+
+get '/About' do 
+	erb :about
+end
+
+get '/visit' do  
+	erb :visit
+end
+
+get '/contacts' do 
+	haml :contacts
 end
 
 post '/contacts' do
 	@name = params[:name]
 	@mail = params[:mail]
 	@body = params[:body]
-	
-	#Pony.mail({
-	#	:to => '19mur@mail.ru',
-		#:via => :smtp,
-	#	:via_options => {
-	#	  :address        => 'smtp.yandex.ru',
-	#	  :port           => '465',
-	#	  :user_name      => '',
-	#	  :password       => '',
-	#	  :authentication => :login, # :plain, :login, :cram_md5, no auth by default
-	#	  :domain         => "localhost.localdomain" # the HELO domain provided by the client to the server
-	#	}
-	#  })
-	  
-
 
 		contacts = File.open("./public/contacts.txt","a")
 		contacts.write "Email_adress: #{@mail}, Message #{@body} name #{@name}.\n"
 		contacts.close
 	haml :contacts
 end	
+

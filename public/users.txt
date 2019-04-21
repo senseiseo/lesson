@@ -15,3 +15,39 @@ User: asfasf, phone: asfasf, date and time: asfasf
 Barber man:.
 User: asasf, phone: sfasf, date and time: asfasf
 Barber man:Смит джон.
+User: , phone: , date and time: 
+Barber man:Джон смит.
+User: , phone: , date and time: 
+Barber man:Джон смит.
+User: , phone: , date and time: 
+Barber man:Джон смит.
+User: , phone: , date and time: 
+Barber man:Джон смит.
+User: adaw, phone: , date and time: 
+Barber man:Саманта клара.
+User: adaw, phone: , date and time: 
+Barber man:Саманта клара.
+User: adaw, phone: , date and time: 
+Barber man:Саманта клара.
+User: adaw, phone: , date and time: 
+Barber man:Джон смит.
+User: adaw, phone: , date and time: 
+Barber man:Джон смит.
+User: asa, phone: adasd, date and time: asda
+Barber man:Джон смит.
+User: , phone: , date and time: 
+Barber man:Смит джон.
+User: , phone: , date and time: 
+Barber man:Смит джон.
+User: aasf, phone: fasf, date and time: afasf
+Barber man:Джон смит.
+User: aasf, phone: fasf, date and time: afasf
+Barber man:Джон смит.
+User: aasf, phone: fasf, date and time: afasf
+Barber man:Джон смит.
+User: aasf, phone: fasf, date and time: afasf
+Barber man:Джон смит.
+User: aasf, phone: fasf, date and time: afasf
+Barber man:Джон смит.
+User: aasf, phone: fasf, date and time: afasf
+Barber man:Джон смит.
