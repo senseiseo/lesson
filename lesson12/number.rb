@@ -8,10 +8,18 @@ def sklonenie(number, krokodil, krokodila, krokodilov)
     # считать, что нас это устроит, просто продолжаем как будто он нулевой.
     number = 0
   end
+  if number >= 11 && number <= 14
+    return krokodilov
+  end
 
   # Так как склонение определяется последней цифрой в числе, вычислим остаток
   # от деления числа number на 10
   ostatok = number % 10
+  ostatok100 = number % 100
+	
+	if (ostatok100 >= 11 && ostatok100 <= 14)
+		return krokodilov
+	end
 
   # Для 1 — именительный падеж (Кто?/Что? — крокодил)
   if ostatok == 1
